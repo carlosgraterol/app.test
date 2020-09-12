@@ -78,7 +78,11 @@
                                                 @else
                                                 <strong>Indique cuál es el otro lugar:</strong> {{ $denuncia->otrolugar }}<br>
                                                 @endif
+                                                @if($denuncia->documento == "")
+                                                    Documento: No subió
+                                                @else
                                                 <strong>Documento:</strong> <a href="{{ asset('upload') }}/{{ $denuncia->documento }}" target="_blank">Descargar</a>
+                                                @endif
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
