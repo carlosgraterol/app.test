@@ -42,9 +42,9 @@ class DenunciaController extends Controller
         ]);
 
         if ($denuncia) {
-            return redirect()->route('home')->with('status','¡Su denuncia ha sido enviada correctamente!');
+            return redirect()->route('index')->with('status','¡Su denuncia ha sido enviada correctamente!');
         }else{
-            return redirect()->route('perfil.estudios')->with('statuswarning','Su denuncia no pudo ser enviada debido a un error interno. Por favor intente de nuevo.');
+            return redirect()->route('index')->with('statuswarning','Su denuncia no pudo ser enviada debido a un error interno. Por favor intente de nuevo.');
         }
     }
 }

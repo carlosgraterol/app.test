@@ -45,30 +45,38 @@
     <script>
         $(document).ready(function(e){
             //Acción si el usuario marca Otro lugar
-            $("#lugarhidden").show();
-            $("#divotrolugar").hide();
+            $("#otrolugar").removeClass("shadow-sm bg-light");
             $("#lugar").on("change", function() {
                 var lugar= $("#lugar").val();
                 if(lugar == "Otro"){
-                    $("#divotrolugar").show();
-                    $("#lugarhidden").hide();
+                    $("#otrolugar").prop('disabled', false);
+                    $("#otrolugar").addClass("shadow-sm bg-light");
                 }else{
-                    $("#lugarhidden").show();
-                    $("#divotrolugar").hide();
+                    $("#otrolugar").prop('disabled', true);
+                    $("#otrolugar").removeClass("shadow-sm bg-light");
                 }
             });
 
             //Acción si el usuario decide que la denuncia no será anónima
-            $("#datoshidden").show();
-            $("#datospersonales").hide();
+            $("#nombre").removeClass("shadow-sm bg-light");
+            $("#rut").removeClass("shadow-sm bg-light");
+            $("#email").removeClass("shadow-sm bg-light");
             $("#anonima").on("change", function() {
                 var anonima= $("#anonima").val();
                 if(anonima == 0){
-                    $("#datospersonales").show();
-                    $("#datoshidden").hide();
+                    $("#nombre").prop('disabled', false);
+                    $("#nombre").addClass("shadow-sm bg-light");
+                    $("#rut").prop('disabled', false);
+                    $("#rut").addClass("shadow-sm bg-light");
+                    $("#email").prop('disabled', false);
+                    $("#email").addClass("shadow-sm bg-light");
                 }else{
-                    $("#datoshidden").show();
-                    $("#datospersonales").hide();
+                    $("#nombre").prop('disabled', true);
+                    $("#nombre").removeClass("shadow-sm bg-light");
+                    $("#rut").prop('disabled', true);
+                    $("#rut").removeClass("shadow-sm bg-light");
+                    $("#email").prop('disabled', true);
+                    $("#email").removeClass("shadow-sm bg-light");
                 }
             });
         });

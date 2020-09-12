@@ -24,7 +24,7 @@
                     @csrf
                     @method('POST')
                         <div class="form-group class="ml-4 text-lg leading-7 font-semibold">
-                            <label for="delito_id" class="col-form-label text-md-right">Tipo de delito</label>
+                            <label for="delito_id" class="col-form-label text-md-right">Tipo de delito (*)</label>
 
                             <select id="delito_id" class="form-control border-0 shadow-sm bg-light  @error('delito_id') is-invalid @enderror" name="delito_id"  autocomplete="delito_id" autofocus>
                                 <option value="">seleccionar tipo de delito</option>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="delito" class="col-form-label text-md-right">Fecha</label>
+                            <label for="delito" class="col-form-label text-md-right">Fecha (*)</label>
 
                             <input id="fecha" type="date" class="form-control border-0 shadow-sm bg-light @error('fecha') is-invalid @enderror" name="fecha" value="{{ old('fecha') }}"  autocomplete="fecha" autofocus minlength="2" maxlength="20">
 
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="identifipersona" class="col-form-label text-md-right">¿Puede identificar a las personas comprometidas?</label>
+                            <label for="identifipersona" class="col-form-label text-md-right">¿Puede identificar a las personas comprometidas? (*)</label>
 
                             <select id="identifipersona" class="form-control border-0 shadow-sm bg-light  @error('identifipersona') is-invalid @enderror" name="identifipersona"  autocomplete="identifipersona" autofocus>
                                 <option value="">seleccione una opción</option>
@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descripcion" class="col-form-label text-md-right">Descripción del hecho</label>
+                            <label for="descripcion" class="col-form-label text-md-right">Descripción del hecho (*)</label>
 
                             <textarea id="descripcion" class="form-control shadow-sm @error('descripcion') is-invalid @enderror" name="descripcion" autocomplete="descripcion" autofocus minlength="30" maxlength="1000" placeholder="(*) A continuación escriba por favor el hecho que desea denunciar y entregue tanto detalle como sea posible, mencione la ubicación de los testigos, cuáles fueron las reacciones o impresiones de los involucrados y cualquier otra información que haya entregado."  rows="6">{{ old('descripcion') }}</textarea>
 
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="conocimiento" class="col-form-label text-md-right">¿Como tomó conocimiento?</label>
+                            <label for="conocimiento" class="col-form-label text-md-right">¿Como tomó conocimiento? (*)</label>
 
                             <select id="conocimiento" class="form-control border-0 shadow-sm bg-light  @error('conocimiento') is-invalid @enderror" name="conocimiento"  autocomplete="delito_id" autofocus>
                                 <option value="">seleccione una opción</option>
@@ -99,7 +99,7 @@
 
 
                         <div class="form-group">
-                            <label for="lugar" class="col-form-label text-md-right">Indique lugar de ocurrencia de la denuncia</label>
+                            <label for="lugar" class="col-form-label text-md-right">Indique lugar de ocurrencia de la denuncia (*)</label>
 
                             <select id="lugar" class="form-control border-0 shadow-sm bg-light  @error('lugar') is-invalid @enderror" name="lugar"  autocomplete="lugar" autofocus>
                                 <option value="">seleccione el lugar</option>
@@ -116,10 +116,10 @@
                             @enderror
                         </div>
 
-                        <div class="form-group" id="divotrolugar">
+                        <div class="form-group">
                             <label for="delito" class="col-form-label text-md-right">Indique cuál es el otro lugar</label>
 
-                            <input id="otrolugar" type="text" class="form-control border-0 shadow-sm bg-light @error('otrolugar') is-invalid @enderror" name="otrolugar" value="{{ old('otrolugar') }}"  autocomplete="otrolugar" autofocus minlength="2" maxlength="20">
+                            <input id="otrolugar" type="text" class="form-control border-0 shadow-sm bg-light @error('otrolugar') is-invalid @enderror" name="otrolugar" value="{{ old('otrolugar') }}"  autocomplete="otrolugar" autofocus minlength="2" maxlength="20" disabled="true">
 
                             @error('otrolugar')
                                 <span class="invalid-feedback" role="alert">
@@ -142,7 +142,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="anonima" class="col-form-label text-md-right">¿Desea que la denuncia se anonima?</label>
+                            <label for="anonima" class="col-form-label text-md-right">¿Desea que la denuncia se anonima? (*)</label>
 
                             <select id="anonima" class="form-control border-0 shadow-sm bg-light  @error('anonima') is-invalid @enderror" name="anonima"  autocomplete="anonima" autofocus>
                                 <option value="">seleccione una opción</option>
@@ -156,52 +156,43 @@
                                 </span>
                             @enderror
                         </div>
-                        <div id="datospersonales">
-                            <div class="form-group">
-                                <label for="nombre" class="col-form-label text-md-right">Nombre</label>
 
-                                <input id="fecha" type="text" class="form-control border-0 shadow-sm bg-light @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}"  autocomplete="fecha" autofocus minlength="2" maxlength="20">
+                        <div class="form-group">
+                            <label for="nombre" class="col-form-label text-md-right">Nombre</label>
 
-                                @error('nombre')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <input id="nombre" type="text" class="form-control border-0 shadow-sm bg-light @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}"  autocomplete="nombre" autofocus minlength="2" maxlength="20" disabled="true">
 
-                            <div class="form-group">
-                                <label for="rut" class="col-form-label text-md-right">Rut</label>
-
-                                <input id="rut" type="text" class="form-control border-0 shadow-sm bg-light @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}"  autocomplete="rut" autofocus minlength="2" maxlength="20">
-
-                                @error('rut')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email" class="col-form-label text-md-right">Email</label>
-
-                                <input id="email" type="text" class="form-control border-0 shadow-sm bg-light @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus minlength="2" maxlength="60">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('nombre')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <!-- Esto por lo generar lo hago con Ajax, aplique una solución rapida aquí por razones de tiempo -->
-                        <div id="lugarhidden">
-                            <input type="hidden" name="otrolugar" value="">
+
+                        <div class="form-group">
+                            <label for="rut" class="col-form-label text-md-right">Rut</label>
+
+                            <input id="rut" type="text" class="form-control border-0 shadow-sm bg-light @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}"  autocomplete="rut" autofocus minlength="2" maxlength="20" disabled="true">
+
+                            @error('rut')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <div id="datoshidden">
-                            <input type="hidden" name="nombre" value="">
-                            <input type="hidden" name="rut" value="">
-                            <input type="hidden" name="email" value="">
+
+                        <div class="form-group">
+                            <label for="email" class="col-form-label text-md-right">Email</label>
+
+                            <input id="email" type="text" class="form-control border-0 shadow-sm bg-light @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email" autofocus minlength="2" maxlength="60" disabled="true">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+
                         <div class="form-group" style="text-align: center;">
                             <input type="submit" value="ENVIAR DENUNCIA" class="btn btn-primary">
                         </div>
