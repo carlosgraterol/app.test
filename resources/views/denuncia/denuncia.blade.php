@@ -29,7 +29,11 @@
                             <select id="delito_id" class="form-control border-0 shadow-sm bg-light  @error('delito_id') is-invalid @enderror" name="delito_id"  autocomplete="delito_id" autofocus>
                                 <option value="">seleccionar tipo de delito</option>
                                 @foreach($delitos as $delito)
-                                    <option value="{{ $delito->id }}">{{ $delito->nombre_delito }}</option>
+                                    @if (old('delito_id') == "")
+                                        <option value="{{ $delito->id }}">{{ $delito->nombre_delito }}</option>
+                                    @else
+                                        <option value="{{ $delito->id }}" {{ old('delito_id') == $delito->id ? 'selected="selected"' : '' }}>{{ $delito->nombre_delito }}</option>
+                                    @endif
                                 @endforeach
                             </select>
 
@@ -57,9 +61,30 @@
 
                             <select id="identifipersona" class="form-control border-0 shadow-sm bg-light  @error('identifipersona') is-invalid @enderror" name="identifipersona"  autocomplete="identifipersona" autofocus>
                                 <option value="">seleccione una opción</option>
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
-                                <option value="No sabe">No sabe/No desea revelar</option>
+                                @switch(old('identifipersona'))
+                                    @case('Si')
+                                        <option value="Si" selected>Si</option>
+                                        <option value="No">No</option>
+                                        <option value="No sabe">No sabe/No desea revelar</option>
+                                    @break
+
+                                    @case('No')
+                                        <option value="Si">Si</option>
+                                        <option value="No" selected>No</option>
+                                        <option value="No sabe">No sabe/No desea revelar</option>
+                                    @break
+
+                                    @case('No sabe')
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                        <option value="No sabe" selected>No sabe/No desea revelar</option>
+                                    @break
+
+                                    @default
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
+                                        <option value="No sabe">No sabe/No desea revelar</option>
+                                @endswitch
                             </select>
 
                             @error('identifipersona')
@@ -86,8 +111,16 @@
 
                             <select id="conocimiento" class="form-control border-0 shadow-sm bg-light  @error('conocimiento') is-invalid @enderror" name="conocimiento"  autocomplete="delito_id" autofocus>
                                 <option value="">seleccione una opción</option>
-                                <option value="Yo lo ví">Yo lo ví</option>
-                                <option value="Me lo contaron">Me lo contaron</option>
+                                @if (old('conocimiento') == "")
+                                    <option value="Yo lo ví">Yo lo ví</option>
+                                    <option value="Me lo contaron">Me lo contaron</option>
+                                @elseif(old('conocimiento') == "Yo lo ví")
+                                    <option value="Yo lo ví" selected>Yo lo ví</option>
+                                    <option value="Me lo contaron">Me lo contaron</option>
+                                @else
+                                    <option value="Yo lo ví">Yo lo ví</option>
+                                    <option value="Me lo contaron" selected>Me lo contaron</option>
+                                @endif
                             </select>
 
                             @error('conocimiento')
@@ -103,10 +136,41 @@
 
                             <select id="lugar" class="form-control border-0 shadow-sm bg-light  @error('lugar') is-invalid @enderror" name="lugar"  autocomplete="lugar" autofocus>
                                 <option value="">seleccione el lugar</option>
-                                <option value="Santiago">Santiago</option>
-                                <option value="Valparaiso">Valparaiso</option>
-                                <option value="Viña del mar">Viña del mar</option>
-                                <option value="Otro">Otro</option>
+                                @switch(old('lugar'))
+                                    @case('Santiago')
+                                        <option value="Santiago" selected>Santiago</option>
+                                        <option value="Valparaiso">Valparaiso</option>
+                                        <option value="Viña del mar">Viña del mar</option>
+                                        <option value="Otro">Otro</option>
+                                    @break
+
+                                    @case('Valparaiso')
+                                        <option value="Santiago">Santiago</option>
+                                        <option value="Valparaiso" selected>Valparaiso</option>
+                                        <option value="Viña del mar">Viña del mar</option>
+                                        <option value="Otro">Otro</option>
+                                    @break
+
+                                    @case('Viña del mar')
+                                        <option value="Santiago">Santiago</option>
+                                        <option value="Valparaiso">Valparaiso</option>
+                                        <option value="Viña del mar" selected>Viña del mar</option>
+                                        <option value="Otro">Otro</option>
+                                    @break
+
+                                    @case('Otro')
+                                        <option value="Santiago">Santiago</option>
+                                        <option value="Valparaiso">Valparaiso</option>
+                                        <option value="Viña del mar">Viña del mar</option>
+                                        <option value="Otro" selected>Otro</option>
+                                    @break
+
+                                    @default
+                                        <option value="Santiago">Santiago</option>
+                                        <option value="Valparaiso">Valparaiso</option>
+                                        <option value="Viña del mar">Viña del mar</option>
+                                        <option value="Otro">Otro</option>
+                                @endswitch
                             </select>
 
                             @error('lugar')
@@ -146,8 +210,16 @@
 
                             <select id="anonima" class="form-control border-0 shadow-sm bg-light  @error('anonima') is-invalid @enderror" name="anonima"  autocomplete="anonima" autofocus>
                                 <option value="">seleccione una opción</option>
-                                <option value="1">Si</option>
-                                <option value="0">No</option>
+                                @if (old('anonima') == "")
+                                    <option value="1">Si</option>
+                                    <option value="0">No</option>
+                                @elseif(old('anonima') == 1)
+                                    <option value="1" selected>Si</option>
+                                    <option value="0">No</option>
+                                @else
+                                    <option value="1">Si</option>
+                                    <option value="0" selected>No</option>
+                                @endif
                             </select>
 
                             @error('anonima')
